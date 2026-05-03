@@ -1,8 +1,9 @@
 streamlit
-openai
-python-docx
+google-genai
+google-generativeai
 PyPDF2
+python-docx
 SpeechRecognition
 pydub
 reportlab
-pyperclip
+ffmpeg-python
