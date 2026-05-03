@@ -29,7 +29,7 @@ st.set_page_config(
 )
 
 # ── GEMINI API KEY ────────────────────────────────────────────────────────────
-API_KEY = "AIzaSyACbJrKTcxnxq0ZN0M4qtW6JMKU5wOhCKM"
+API_KEY = "AIzaSyCkPCJG709hVX-IOEFnsdQ0BO4m_PSVtAI"
 client = genai.Client(api_key=API_KEY)
 
 # ── SESSION STATE ─────────────────────────────────────────────────────────────
