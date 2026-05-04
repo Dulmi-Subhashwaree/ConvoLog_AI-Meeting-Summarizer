@@ -290,7 +290,7 @@ audio{{width:100%;border-radius:8px;margin-top:6px;}}
 
 <div class="cl-banner">{banner_content}</div>
 """, unsafe_allow_html=True)
-    return sub_content
+    return ""
 
 # ── HELPERS ───────────────────────────────────────────────────────────────────
 def clean(text):
