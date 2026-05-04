@@ -329,7 +329,7 @@ def transcribe(uploaded):
             except Exception:
                 try:
                     # Direct ffmpeg command with full path
-                    ffmpeg_path = r"C:\ffmpeg\bin\ffmpeg.exe"
+                    ffmpeg_path = r"C:/ffmpeg/bin/ffmpeg.exe"
                     result = subprocess.run([
                         ffmpeg_path, "-y",
                         "-analyzeduration", "100M",
