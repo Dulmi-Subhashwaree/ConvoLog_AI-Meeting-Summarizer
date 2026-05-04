@@ -13,9 +13,9 @@ import PyPDF2
 from docx import Document
 import speech_recognition as sr
 from pydub import AudioSegment
-AudioSegment.converter = r"C:/ffmpeg/bin/ffmpeg.exe"
-AudioSegment.ffmpeg    = r"C:/ffmpeg/bin/ffmpeg.exe"
-AudioSegment.ffprobe   = r"C:/ffmpeg/bin/ffmpeg.exe"
+AudioSegment.converter = r"C:\\ffmpeg\\bin\\ffmpeg.exe"
+AudioSegment.ffmpeg    = r"C:\\ffmpeg\\bin\\ffmpeg.exe"
+AudioSegment.ffprobe   = r"C:\\ffmpeg\\bin\\ffmpeg.exe"
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -329,7 +329,7 @@ def transcribe(uploaded):
             except Exception:
                 try:
                     # Direct ffmpeg command with full path
-                    ffmpeg_path = r"C:/ffmpeg/bin/ffmpeg.exe"
+                    ffmpeg_path = r"C:\\ffmpeg\\bin\\ffmpeg.exe"
                     result = subprocess.run([
                         ffmpeg_path, "-y",
                         "-analyzeduration", "100M",
