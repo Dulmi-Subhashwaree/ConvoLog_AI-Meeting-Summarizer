@@ -13,6 +13,9 @@ import PyPDF2
 from docx import Document
 import speech_recognition as sr
 from pydub import AudioSegment
+AudioSegment.converter = r"C:\ffmpeg\bin\ffmpeg.exe"
+AudioSegment.ffmpeg    = r"C:\ffmpeg\bin\ffmpeg.exe"
+AudioSegment.ffprobe   = r"C:\ffmpeg\bin\ffprobe.exe"
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -29,7 +32,7 @@ st.set_page_config(
 )
 
 # ── GEMINI API KEY ────────────────────────────────────────────────────────────
-API_KEY = "AIzaSyCkPCJG709hVX-IOEFnsdQ0BO4m_PSVtAI"
+API_KEY = "AIzaSyA0FjaVxKAAs1t7yvRI5jPv5cPWH5yLazY"
 client = genai.Client(api_key=API_KEY)
 
 # ── SESSION STATE ─────────────────────────────────────────────────────────────
@@ -308,31 +311,50 @@ def extract_file(f):
 def transcribe(uploaded):
     rec = sr.Recognizer()
     suffix = ".wav" if uploaded.name.lower().endswith(".wav") else ".mp3"
+
     with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as t:
-        t.write(uploaded.read()); tp = t.name
+        t.write(uploaded.read())
+        tp = t.name
+
     wav_path = tp
+
     if suffix == ".mp3":
         wav_path = tp.replace(".mp3", ".wav")
-        try: AudioSegment.from_mp3(tp).export(wav_path, format="wav")
+        try:
+            # Try pydub first (uses the paths set above)
+            AudioSegment.from_mp3(tp).export(wav_path, format="wav")
         except Exception:
-            try: AudioSegment.from_file(tp).export(wav_path, format="wav")
+            try:
+                AudioSegment.from_file(tp).export(wav_path, format="wav")
             except Exception:
                 try:
+                    # Direct ffmpeg command with full path
+                    ffmpeg_path = r"C:\ffmpeg\bin\ffmpeg.exe"
                     result = subprocess.run([
-                        "ffmpeg","-y","-analyzeduration","100M","-probesize","100M",
-                        "-i",tp,"-ar","16000","-ac","1","-f","wav",wav_path
+                        ffmpeg_path, "-y",
+                        "-analyzeduration", "100M",
+                        "-probesize", "100M",
+                        "-i", tp,
+                        "-ar", "16000",
+                        "-ac", "1",
+                        "-f", "wav",
+                        wav_path
                     ], capture_output=True, timeout=60)
                     if result.returncode != 0:
                         os.remove(tp)
                         return "❌ Could not decode MP3. Try converting to WAV at convertio.co"
                 except Exception as e:
-                    os.remove(tp); return f"❌ Audio conversion failed: {e}"
+                    os.remove(tp)
+                    return f"❌ Audio conversion failed: {e}"
     try:
         with sr.AudioFile(wav_path) as source:
             rec.adjust_for_ambient_noise(source, duration=0.5)
-            return rec.recognize_google(rec.record(source))
-    except sr.UnknownValueError: return "❌ Could not understand audio."
-    except sr.RequestError as e: return f"❌ Error: {e}"
+            audio_data = rec.record(source)
+            return rec.recognize_google(audio_data)
+    except sr.UnknownValueError:
+        return "❌ Could not understand the audio. Ensure clear speech in the recording."
+    except sr.RequestError as e:
+        return f"❌ Speech recognition error: {e}"
     finally:
         if os.path.exists(tp): os.remove(tp)
         if wav_path != tp and os.path.exists(wav_path): os.remove(wav_path)
