@@ -15,7 +15,7 @@ import speech_recognition as sr
 from pydub import AudioSegment
 AudioSegment.converter = r"C:/ffmpeg/bin/ffmpeg.exe"
 AudioSegment.ffmpeg    = r"C:/ffmpeg/bin/ffmpeg.exe"
-AudioSegment.ffprobe   = r"C:/ffmpeg/bin/ffprobe.exe"
+AudioSegment.ffprobe   = r"C:/ffmpeg/bin/ffmpeg.exe"
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
