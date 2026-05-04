@@ -14,15 +14,11 @@ from docx import Document
 import speech_recognition as sr
 from pydub import AudioSegment
 import shutil
-_ffmpeg_path = shutil.which("ffmpeg")
-if _ffmpeg_path:
-    AudioSegment.converter = _ffmpeg_path
-    AudioSegment.ffmpeg    = _ffmpeg_path
-    AudioSegment.ffprobe   = shutil.which("ffprobe") or _ffmpeg_path
-else:
-    AudioSegment.converter = "C:\\ffmpeg\\bin\\ffmpeg.exe"
-    AudioSegment.ffmpeg    = "C:\\ffmpeg\\bin\\ffmpeg.exe"
-    AudioSegment.ffprobe   = "C:\\ffmpeg\\bin\\ffprobe.exe"
+_ffmpeg = shutil.which("ffmpeg")
+if _ffmpeg:
+    AudioSegment.converter = _ffmpeg
+    AudioSegment.ffmpeg    = _ffmpeg
+    AudioSegment.ffprobe   = shutil.which("ffprobe") or _ffmpeg
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
