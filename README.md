@@ -1,7 +1,7 @@
 # ConvoLog – AI Meeting Summarizer
 
 <p align="center">
-  <img src="Convolog_Logo.png" alt="Convolog" width="300"/>
+ <img src="Convolog Logo.png" alt="ConvoLog Logo" width="300"/>
 </p>
 
 <p align="center">
