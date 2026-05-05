@@ -550,7 +550,7 @@ def render_sidebar():
                     ts=item.get("ts","") if isinstance(item,dict) else ""
                     data=item.get("data","") if isinstance(item,dict) else ""
                     with st.expander(f"{label}"):
-                        st.markdown(f'<div style="font-size:.7rem;color:rgba(126,184,212,.7);margin-bottom:8px;">{ts}</div>',unsafe_allow_html=True)
+                        st.markdown(f'<div style="font-size:.7rem;color:rgba(126,184,212,.7);margin-bottom:0px;">{ts}</div>',unsafe_allow_html=True)
                         if data: st.text_area("",value=data,height=200,key=f"sv_{view}_{i}")
             return
 
@@ -853,7 +853,7 @@ def main():
         }}
         </script>
         """
-        components.html(recorder_html, height=200)
+        components.html(recorder_html, height=60)
 
         # Text area
         text_input = st.text_area(
