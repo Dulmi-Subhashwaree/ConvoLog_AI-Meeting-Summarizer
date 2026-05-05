@@ -853,7 +853,7 @@ def main():
         }}
         </script>
         """
-        components.html(recorder_html, height=60)
+        components.html(recorder_html, height=100)
 
         # Text area
         text_input = st.text_area(
