@@ -69,3 +69,52 @@ Accepts JPG, PNG, WEBP, and BMP image uploads, as well as live camera capture. U
 The core of the application. Sends cleaned and structured prompts to the Google Gemini 2.5 Flash model with user-defined parameters for length, tone, and format. Parses the structured response into five output sections.
 
 ###
+
+## Key Features
+
+- **Multi-format input handling** — Text, voice recording, file upload, audio upload, and image capture
+- **Real-time AI summarization** — Powered by Google Gemini 2.5 Flash
+- **Structured output generation** — Five clearly defined sections per summary
+- **Download summaries as PDF** — Professionally formatted using ReportLab
+- **History tracking and pinned summaries** — Session-based conversation management
+- **Dark and light mode interface** — Toggle between themes with a single click
+- **Live voice waveform visualization** — Real-time audio feedback during recording
+- **Sidebar navigation** — Search, history, downloads, and pinned conversations
+- **Mobile responsive design** — Works on desktop and mobile browsers
+- **Filler word removal** — Automatically cleans spoken text before summarization
+
+
+## Methodology
+1. User Input Collection
+2. Data Extraction (text, audio, documents, images)
+3. Data Preprocessing
+4. AI-based Summarization using Gemini API
+5. Output Structuring
+6. Display and Export Results
+7. Display and Export Results
+   (On-screen display / PDF download / Pin / History save)
+
+## Key Functionalities
+- Text summarization
+- Document summarization (PDF, DOCX)
+- Audio transcription and summarization
+- Image text extraction and summarization
+- Downloadable reports
+
+## Applications
+- Meeting management
+- Student note summarization
+- Business communication analysis
+- Interview summaries
+- Personal productivity tools
+
+
+## Authors
+- Dulmi Subhashwaree
+
+---
+
+## License
+This project is for academic and educational purposes.
+
+   
