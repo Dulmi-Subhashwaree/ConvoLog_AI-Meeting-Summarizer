@@ -20,9 +20,9 @@ The system supports multiple input formats including text, documents, audio, and
 
 Built using **Python** and **Streamlit**, ConvoLog integrates the **Google Gemini 2.5 Flash** large language model to intelligently process and summarize meeting content. The application provides a clean, modern interface with dark and light mode support, voice recording with live waveform visualization, and downloadable PDF reports.
 
-# YouTube Short
+### YouTube Short
 
-🎥 Watch here: https://youtube.com/shorts/r7mqldYbam8?si=1DjAzxW7fClTpiBe
+#### 🎥 Watch here: https://youtube.com/shorts/r7mqldYbam8?si=1DjAzxW7fClTpiBe
 ---
 
 ## Objectives
